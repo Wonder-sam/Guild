@@ -141,14 +141,15 @@
 @keyframes fadeIn{
     0%{
         transform:translateY(20%);
+        opacity: .4;
     }
     100%{
         transform: translateY(0%);
+        opacity: 1;
     }
 }
 #mainContent{
     display: flex;
-    justify-content: space-between;
     padding-top: 10px;
 }
 #sideBar{
@@ -164,6 +165,7 @@
     border-radius: 5px;
     margin: 0 20px 0 10px;
     size-adjust: auto;
+    justify-content: space-around;
 }
 #event{
     width: 25%;
@@ -232,4 +234,14 @@ h2{
     width: 75%;
     display: none;
     animation: none;
+}
+.committees{
+    width: 75%;
+    display: none;
+    animation: none;
+}
+
+h2 i{
+    float: right;
+    cursor: pointer;
 }

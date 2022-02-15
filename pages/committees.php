@@ -5,12 +5,12 @@
         header("location: login.php");
         exit;
     }
-    $guildGroups =["Great Alpha", "Souls", "Wisdom","Ebenezer"];
-    if(!in_array($_GET['group'], $guildGroups) ){
+
+    $guildCommittees =["Youth and Students Week", "Education", "Protocol", "Project", "Evangelism", "Welfare", "Finance"];
+    if(!in_array($_GET['committee'], $guildCommittees) ){
         header("location: /404.html");
     }
 
-    $curl = curl_init();
 ?>
 <!DOCTYPE html>
 <html lang='eng'>
@@ -25,19 +25,19 @@
         <div id="allcontent">
             <?php include "header.php"; ?>
             <div id="top">
-                <?php include "menuTabs.php"; ?>
+                    <?php include "menuTabs.php"; ?>
             </div>
             <div id="main">
                 <img src ="../images/ypglogo.png" class ="logo" />
-                <h2><?php echo $_GET['group'] ?></h2>
+                <h2><?php echo $_GET['committee']." Committee"; ?></h2>
                 <table>
                     <?php
-                        $leaderSql = "SELECT First_Name, Last_Name, Other_Names FROM members WHERE Executive_Position = '".$_GET['group']." Group Leader'";
+                        $leaderSql = "SELECT First_Name, Last_Name, Other_Names FROM members WHERE Committee_Position = 'president' AND  Guild_Committee = '".$_GET['committee']."'";
                         $leader = mysqli_query($link, $leaderSql);
                         $groupLeader = mysqli_fetch_assoc($leader);
                     ?>
                     <tr>
-                        <th>Current Group Leader:</th>
+                        <th>Head of Committee:</th>
                         <td><?php echo $groupLeader['First_Name']." ".$groupLeader['Other_Names']." ".$groupLeader['Last_Name']; ?><td>
                         <td></td>
                         <th>Year</th>
@@ -58,7 +58,7 @@
                         <th>No.</th><th>Last Name</th><th>First Name(s)</th><th>Phone</th><th>Email</th>
                     </tr>
                     <?php 
-                        $sql = "SELECT * FROM members WHERE Guild_Group = '".$_GET['group']."'";
+                        $sql = "SELECT * FROM members WHERE Guild_Committee = '".$_GET['committee']."'";
                         $result = mysqli_query($link, $sql);
                         $num = 1;
                         while($row = mysqli_fetch_assoc($result)){

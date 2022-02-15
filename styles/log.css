@@ -14,7 +14,7 @@ body{
 #page:before{
 	content: '';
 	position: absolute;
-	background: url("../images/back.png") no-repeat;
+	background: url("../images/left2.jpg") no-repeat;
 	background-size: cover;
 	left: 0;
 	transform: rotate(-180deg);

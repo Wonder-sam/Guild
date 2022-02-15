@@ -13,6 +13,7 @@ function showTabs(){
         updates.style.animation = "adjustRight 1 .5s";
         sideBar.style.animation = "moveright 1 .5s";
         sideBar.style.display = "block";
+        document.getElementsByClassName("pages")[0].style.animation = "none";
     }
 }
 
@@ -27,10 +28,21 @@ function goToGroups(targ){
     let replacement = document.getElementById("guildGroups");
     let htmlReplacement = replacement.innerHTML;
     target.innerHTML = htmlReplacement;
-    target.getElementsByClassName("pages")[0].style.display = "none";
     target.getElementsByClassName("pages")[0].style.display = "flex";
-    target.getElementsByClassName("pages")[0].style.animation = "fadeIn 1 1 s";
-    console.log(target);
+    target.getElementsByClassName("pages")[0].style.animation = "fadeIn 1 1s";
+}
+function goToCommittees(targ){
+    let target = targ.parentNode.parentNode;
+    let replacement = document.getElementById("guildCommittees");
+    let htmlReplacement = replacement.innerHTML;
+    target.innerHTML = htmlReplacement;
+    target.getElementsByClassName("pages")[0].style.display = "flex";
+    target.getElementsByClassName("pages")[0].style.animation = "fadeIn 1 1s";
+}
+function goBack(targ){
+    let target = targ.parentNode.parentNode;
+    target.getElementsByClassName("pages")[0].style.display = "flex";
+    target.getElementsByClassName("pages")[0].style.animation = "fadeIn 1 1s";
 }
 function calendar(year, month, months, days, firstDay){
     document.getElementById("month").innerHTML = months[month];
@@ -61,6 +73,14 @@ function calendar(year, month, months, days, firstDay){
 }
 
 window.onload =function init(){
+    if(visitGroups =='yes'){
+        goToGroups(document.getElementById("refreshGroups"));
+        visitGrpups = 'no';
+    }
+    if(visitCommittees =='yes'){
+        goToCommittees(document.getElementById("refreshcommittees"));
+        visitCommittees = 'no';
+    }
     let months = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
     let months30 = new Array("September", "April", "June", "November");
     let days = new Map();
@@ -113,4 +133,5 @@ window.onload =function init(){
         document.getElementById("calendar").innerHTML = '';
         calendar(year,month,months,days,firstDay)
     }
+
 }

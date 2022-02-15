@@ -1,0 +1,13 @@
+.popups{
+    list-style-type: none;
+    position: absolute;
+    background-color: white !important;
+    width: 150px;
+    left: 100px;
+    height: auto;
+    display: none;
+}
+.popups:first-of-type{
+    
+    left: 80px;
+}
